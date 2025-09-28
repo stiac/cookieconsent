@@ -1,0 +1,2 @@
+-- Migration placeholder for Cookie Consent plugin version 1.0.0
+-- No database schema required; this file documents the release baseline.
