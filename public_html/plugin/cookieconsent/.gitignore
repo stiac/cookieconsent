@@ -1,0 +1,10 @@
+/vendor/
+/node_modules/
+/storage/logs/*.log
+/storage/cache/*
+/storage/tmp/*
+/storage/uploads/*
+.env
+.idea/
+*.log
+.DS_Store
