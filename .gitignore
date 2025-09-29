@@ -1,7 +1,10 @@
 /public_html/plugin/cookieconsent/storage/logs/*.log
 /public_html/plugin/cookieconsent/storage/cache/*
+!/public_html/plugin/cookieconsent/storage/cache/.gitkeep
 /public_html/plugin/cookieconsent/storage/tmp/*
+!/public_html/plugin/cookieconsent/storage/tmp/.gitkeep
 /public_html/plugin/cookieconsent/storage/uploads/*
+/public_html/plugin/cookieconsent/config/.env
 /vendor/
 /node_modules/
 .env

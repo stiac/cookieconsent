@@ -1,6 +1,6 @@
 # Cookie Consent Plugin
 
-**Versione corrente:** 1.0.1
+**Versione corrente:** 1.1.0
 
 Plugin PHP pensato per ambienti condivisi con cPanel che fornisce banner e preferenze di consenso ai cookie, senza richiedere toolchain di build. Tutti i file possono essere caricati via FTP mantenendo piena compatibilità con l'alberatura `public_html/plugin/cookieconsent`.
 
@@ -25,8 +25,8 @@ Plugin PHP pensato per ambienti condivisi con cPanel che fornisce banner e prefe
    ├── tests/
    └── docs/
    ```
-3. Impostare i permessi di scrittura su `storage/` e sottocartelle se il server lo richiede.
-4. Visitare `https://tuodominio.tld/plugin/cookieconsent/public/install/` per verificare i prerequisiti e completare l'installazione guidata.
+3. Impostare i permessi di scrittura su `storage/logs`, `storage/cache` e `storage/tmp` se il server lo richiede.
+4. Visitare `https://tuodominio.tld/plugin/cookieconsent/public/install/` per verificare i prerequisiti, configurare il file `.env` a partire dal template e applicare automaticamente le migrazioni SQL disponibili.
 5. Inserire nel layout pubblico i riferimenti agli asset:
    ```html
    <link rel="stylesheet" href="/plugin/cookieconsent/public/assets/css/app.css">
@@ -49,9 +49,14 @@ Plugin PHP pensato per ambienti condivisi con cPanel che fornisce banner e prefe
 
 ## Aggiornamento e versionamento
 1. Caricare i nuovi file sovrascrivendo quelli esistenti.
-2. Visitare `https://tuodominio.tld/plugin/cookieconsent/public/update/` per applicare migrazioni e verificare la versione installata.
+2. Visitare `https://tuodominio.tld/plugin/cookieconsent/public/update/` per applicare solo le migrazioni mancanti, confrontare la versione installata con il contenuto di `VERSION` e aggiornare lo stato locale.
 3. Ad ogni release aggiornare coerentemente i file `README.md`, `CHANGELOG.md` e `VERSION`.
 4. Consultare `CHANGELOG.md` per l'elenco delle modifiche e `ROADMAP.md` per le evoluzioni pianificate.
+
+## Monitoraggio e diagnostica
+- Endpoint `https://tuodominio.tld/plugin/cookieconsent/public/health/` che restituisce uno stato JSON con versione applicativa, verifica PHP, permessi delle cartelle di runtime e stato della connessione al database.
+- Log dettagliati in `storage/logs/install.log` generati da installatore, updater e health check per facilitare il troubleshooting.
+- Directory di cache e sessione (`storage/cache`, `storage/tmp`) mantenute e verificate automaticamente dagli script per evitare problemi di permessi.
 
 ## Documentazione di supporto
 - `docs/DEPENDENCIES.md`: librerie e licenze adottate.

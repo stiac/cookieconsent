@@ -2,8 +2,8 @@
 
 ## Dati generali
 - **Progetto:** Cookie Consent Plugin
-- **Versione:** 1.0.1
-- **Data rilascio:** 2025-09-29
+- **Versione:** 1.1.0
+- **Data rilascio:** 2025-09-30
 - **Autore referente:** Team CookieConsent
 
 ## Stato moduli
@@ -11,13 +11,14 @@
 |------------------------------|-------------|------|
 | Banner consenso              | Completo    | Banner responsive basato su Tailwind UI. |
 | Gestione preferenze          | Completo    | Salvataggio preferenze con fallback locale. |
-| Integrazione database        | In corso    | Migliorare script install/update per configurazione guidata DB. |
-| Log e audit                  | Pianificato | Richiede definizione schema logging in `/storage/logs/`. |
-| Health check `/public/health`| Completo    | Restituisce stato minimo applicazione. |
+| Integrazione database        | In corso    | Connessione PDO opzionale gestita da installer/updater, ancora da estendere a preferenze. |
+| Log e audit                  | In corso    | Logger centralizzato per installatore, updater e health check. |
+| Health check `/public/health`| Completo    | Ora restituisce JSON completo con versioni, permessi e DB. |
 
 ## Attività recenti
 | Data       | Attività                                      | Responsabile    | Tempo stimato |
 |------------|-----------------------------------------------|-----------------|---------------|
+| 2025-09-30 | Implementazione installer/updater avanzati e health check JSON | Sviluppo Backend | 6h |
 | 2025-09-29 | Aggiornamento documentazione di rilascio 1.0.1 | Documentazione  | 2h            |
 | 2025-09-28 | Allineamento struttura progetto                | Sviluppo Backend| 6h            |
 
