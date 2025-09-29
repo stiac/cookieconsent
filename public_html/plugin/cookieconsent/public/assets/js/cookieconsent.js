@@ -124,14 +124,38 @@
             });
     }
 
-    Promise.all([
-        request(endpoints.config),
-        fetch(endpoints.banner, { credentials: 'same-origin' })
-    ])
-        .then(async ([configResponse, bannerResponse]) => {
+    request(endpoints.config)
+        .then(async (configResponse) => {
             const configJson = await configResponse.json();
-            state.categories = configJson.config.categories || {};
+            const categories = (configJson.config && configJson.config.categories) || {};
+            state.categories = categories;
             state.preferences = configJson.preferences || {};
+
+            // Detects persisted consent either by explicit flags returned by the API
+            // or by checking that we already have stored preferences in the cookie.
+            const consentFlag = Boolean(
+                configJson.hasConsent ||
+                configJson.preferencesPersisted ||
+                (configJson.meta && configJson.meta.consent === 'stored')
+            );
+            const storedConsent = consentFlag || Object.keys(state.preferences).length > 0;
+
+            // When preferences are already stored we skip rendering the banner to prevent
+            // a flash of content on subsequent page loads. The root node is hidden to
+            // avoid leaving an empty placeholder in the layout.
+            if (storedConsent) {
+                root.innerHTML = '';
+                root.setAttribute('hidden', 'hidden');
+                return null;
+            }
+
+            root.removeAttribute('hidden');
+            return fetch(endpoints.banner, { credentials: 'same-origin' });
+        })
+        .then(async (bannerResponse) => {
+            if (!bannerResponse) {
+                return;
+            }
 
             const html = await bannerResponse.text();
             root.innerHTML = html;

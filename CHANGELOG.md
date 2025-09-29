@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.1] - 2025-10-01
+### Added
+- N/D.
+
+### Changed
+- JavaScript del banner aggiornato per saltare il rendering quando vengono rilevate preferenze già salvate o flag espliciti di consenso.
+
+### Fixed
+- Evitato il lampeggiamento del banner nelle visite successive dopo che il consenso è stato memorizzato.
+
+### Removed
+- N/D.
+
 ## [1.1.0] - 2025-09-30
 ### Added
 - Installatore web in `public/install/` con verifica prerequisiti, editor `.env` e applicazione automatica delle migrazioni con log in `storage/logs/install.log`.
