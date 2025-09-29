@@ -1,8 +1,10 @@
 # Cookie Consent Plugin
 
-**Versione corrente:** 1.1.0
+**Versione corrente:** 1.1.1
 
 Plugin PHP pensato per ambienti condivisi con cPanel che fornisce banner e preferenze di consenso ai cookie, senza richiedere toolchain di build. Tutti i file possono essere caricati via FTP mantenendo piena compatibilità con l'alberatura `public_html/plugin/cookieconsent`.
+
+- Il banner resta nascosto automaticamente quando sono già presenti preferenze salvate, evitando flash visivi alle visite successive.
 
 ## Requisiti
 - **PHP:** 8.1 o superiore (testato su 8.1 e 8.2) con estensioni standard abilitate (`json`, `mbstring`).
